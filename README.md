@@ -32,7 +32,7 @@ To get started with this project:
     Use the following command to clone this repository:
 
     ```bash
-    git clone https://github.com/yourusername/yourrepository.git
+    git clone https://github.com/lele-sf/django-react-todo-app.git
     ```
 
 2. **Set up a virtual environment (optional but recommended)**
