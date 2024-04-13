@@ -2,9 +2,7 @@
 
 This is a simple Todo List application built with Django and React + Joy UI.
 
-<div style="text-align:center">
-  <img src="assets/todo-project.png" width="600" alt="To-Do project">
-</div>
+<img src="assets/todo-project-dark.png" width="600" alt="To-Do project">
 
 ## Features
 
