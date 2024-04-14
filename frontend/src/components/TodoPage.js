@@ -165,60 +165,73 @@ export default function TodoPage() {
         <Divider>TASKS</Divider>
         <Stack gap={4} sx={{ mt: 2 }}>
           <Stack gap={2}>
-            {filteredTasks
-              .slice()
-              .reverse()
-              .map((task, index) => (
-                <Box
-                  key={index}
-                  sx={{
-                    display: "flex",
-                    flexDirection: "column",
-                    "& > div": { p: 2, borderRadius: "md", display: "flex" },
-                  }}
-                >
-                  <Sheet variant="outlined">
-                    <Box
-                      sx={{
-                        width: "100%",
-                        display: "flex",
-                        alignItems: "center",
-                        justifyContent: "space-between",
-                      }}
-                    >
-                      <Checkbox
-                        label={task.title}
-                        checked={task.completed}
-                        onChange={() =>
-                          handleToggleComplete(task.id, !task.completed)
-                        }
-                        style={{
-                          textDecoration: task.completed
-                            ? "line-through"
-                            : "none",
+            {filteredTasks.length > 0 ? (
+              filteredTasks
+                .slice()
+                .reverse()
+                .map((task, index) => (
+                  <Box
+                    key={index}
+                    sx={{
+                      display: "flex",
+                      flexDirection: "column",
+                      "& > div": { p: 2, borderRadius: "md", display: "flex" },
+                    }}
+                  >
+                    <Sheet variant="outlined">
+                      <Box
+                        sx={{
+                          width: "100%",
+                          display: "flex",
+                          alignItems: "center",
+                          justifyContent: "space-between",
                         }}
-                      />
-                      <Box sx={{ display: "flex" }}>
-                        <IconButton
-                          aria-label="Edit task"
-                          onClick={() => {
-                            setEditTask(task);
-                            setNewTask(task.title);
+                      >
+                        <Checkbox
+                          label={task.title}
+                          checked={task.completed}
+                          onChange={() =>
+                            handleToggleComplete(task.id, !task.completed)
+                          }
+                          style={{
+                            textDecoration: task.completed
+                              ? "line-through"
+                              : "none",
                           }}
-                        >
-                          <EditRoundedIcon />
-                        </IconButton>
-                        <IconButton
-                          aria-label="Delete task"
-                          onClick={() => handleDeleteTask(task.id)}
-                        >
-                          <DeleteRoundedIcon />
-                        </IconButton>
+                        />
+                        <Box sx={{ display: "flex" }}>
+                          <IconButton
+                            aria-label="Edit task"
+                            onClick={() => {
+                              setEditTask(task);
+                              setNewTask(task.title);
+                            }}
+                          >
+                            <EditRoundedIcon />
+                          </IconButton>
+                          <IconButton
+                            aria-label="Delete task"
+                            onClick={() => handleDeleteTask(task.id)}
+                          >
+                            <DeleteRoundedIcon />
+                          </IconButton>
+                        </Box>
                       </Box>
-                    </Box>
-                  </Sheet>
-                </Box>
-              ))}
+                    </Sheet>
+                  </Box>
+                ))
+            ) : (
+              <Box
+                sx={{
+                  display: "flex",
+                  justifyContent: "center",
+                }}
+              >
+                <Typography align="center">
+                  No tasks available. Add a new task to get started!
+                </Typography>
+              </Box>
+            )}
           </Stack>
         </Stack>
       </Box>
